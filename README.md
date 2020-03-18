@@ -9,7 +9,7 @@ The main window is supposed to act as the window that you primarly focus on, whi
 #### Support window
 This window acts as a support window to the main window, this could for example be a web browser or file explorer that you browse while you code in the main window. Note that the main window is always on the left side, if you try to place it on the right side, this script will misinterpret that as a lot of padding and everything will be bonk.
 
-#### Adaptive window
+#### Cycle window
 This window have three (cyclable) preset size: large, medium and small. Try them out and you'll see what I mean. I use the large window size when I casually browse the web. The medium window is a good size for spotify and discord (in my opinion) and the small window is the typical file explorer size for me.
 
 #### Full screen window
@@ -29,7 +29,7 @@ Place and resize the active window so it has the positon and size of the main wi
 Place and resize the active window so it has the positon and size of the support window.
  
 `Shift+alt+3`
-Cycle through the adaptive window sizes for the active window.
+Cycle through the cycle window sizes for the active window.
 
 `Shift+alt+4`
 Make the active window a full screen window.

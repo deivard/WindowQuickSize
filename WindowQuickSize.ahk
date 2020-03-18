@@ -8,9 +8,9 @@ Global main_x,main_y,main_w,main_h
 ; Support window dimensionn
 Global sup_x,sup_y,sup_w,sup_h
 ; Adaptive window dimensions
-Global adapt_x0,adapt_y0,adapt_w0,adapt_h0, adapt_x1,adapt_y1,adapt_w1,adapt_h1, adapt_x2,adapt_y2,adapt_w2,adapt_h2 ;, adapt_x3,adapt_y3,adapt_w3,adapt_h3
+Global cycle_x0,cycle_y0,cycle_w0,cycle_h0, cycle_x1,cycle_y1,cycle_w1,cycle_h1, cycle_x2,cycle_y2,cycle_w2,cycle_h2 ;, cycle_x3,cycle_y3,cycle_w3,cycle_h3
 ; Adaptive window dimension tracker
-Global adapt_index = 0 
+Global cycle_index = 0 
 ; Full screen dimensions
 Global full_x,full_y,full_w,full_h
 ; User defined custom window dimensions
@@ -49,30 +49,30 @@ init() {
   full_h = % window_h
 
   ; NOTE: This configuration is not used anymore
-  ; First configuration of adaptive window.
+  ; First configuration of cycleive window.
   ; Same dimension as full screen but only cover 6/8 of width
-  ; adapt_x0 = % screen_w/8
-  ; adapt_y0 = % main_y
-  ; adapt_w0 = % (screen_w/8)*6
-  ; adapt_h0 = % main_w
+  ; cycle_x0 = % screen_w/8
+  ; cycle_y0 = % main_y
+  ; cycle_w0 = % (screen_w/8)*6
+  ; cycle_h0 = % main_w
 
   ; This is the new first configuration
-  adapt_x0 = % (screen_w/8)
-  adapt_y0 = % (screen_h/48)
-  adapt_w0 = % (screen_w/8)*6
-  adapt_h0 = % (screen_h/48)*46.5
-  ; Second configuration of adaptive window.
+  cycle_x0 = % (screen_w/8)
+  cycle_y0 = % (screen_h/48)
+  cycle_w0 = % (screen_w/8)*6
+  cycle_h0 = % (screen_h/48)*46.5
+  ; Second configuration of cycleive window.
   ; Just a bit smaller than previous window.
-  adapt_x1 = % (screen_w/25)*6
-  adapt_y1 = % (screen_h/25)*3
-  adapt_w1 = % (screen_w/25)*12
-  adapt_h1 = % (screen_h/25)*17
-  ; Third configuration of adaptive window.
+  cycle_x1 = % (screen_w/25)*6
+  cycle_y1 = % (screen_h/25)*3
+  cycle_w1 = % (screen_w/25)*12
+  cycle_h1 = % (screen_h/25)*17
+  ; Third configuration of cycleive window.
   ; Just a bit smaller than previous window.
-  adapt_x2 = % (screen_w/25)*7.5
-  adapt_y2 = % (screen_h/25)*5
-  adapt_w2 = % (screen_w/25)*10
-  adapt_h2 = % (screen_h/25)*15
+  cycle_x2 = % (screen_w/25)*7.5
+  cycle_y2 = % (screen_h/25)*5
+  cycle_w2 = % (screen_w/25)*10
+  cycle_h2 = % (screen_h/25)*15
 
   ; Read the user defined custom window dimensions
   IniRead, cust_x, WindowQuickSize.ini, %section%, cust_x, -1
@@ -160,7 +160,7 @@ return
   WinMove, %title%,, sup_x, sup_y, sup_w, sup_h
 return
 
-; Shift+alt+3: Move active window to adaptive position 
+; Shift+alt+3: Move active window to cycleive position 
 +!3::
   WinGetActiveTitle, title
   if (title != last_title){
@@ -169,18 +169,18 @@ return
     lastTitle = %title%
   }
   ; Check if the last active is the one that is active now
-  if (adaptive_last_title = title) {
-    ; Increment the adaptive counter
-    adapt_index = % mod(adapt_index + 1, 3) 
+  if (cycleive_last_title = title) {
+    ; Increment the cycleive counter
+    cycle_index = % mod(cycle_index + 1, 3) 
   }
   else {
     ; Else we should use the first configuration
-    adapt_index := 0
-    ; MsgBox, %adapt_index% 
+    cycle_index := 0
+    ; MsgBox, %cycle_index% 
   }
   last_title = %title%
-  adaptive_last_title = %title%
-  WinMove, %title%,, adapt_x%adapt_index%, adapt_y%adapt_index%, adapt_w%adapt_index%, adapt_h%adapt_index%
+  cycleive_last_title = %title%
+  WinMove, %title%,, cycle_x%cycle_index%, cycle_y%cycle_index%, cycle_w%cycle_index%, cycle_h%cycle_index%
 return
 
 ; Shift+alt+4: Move active window to full screen position
