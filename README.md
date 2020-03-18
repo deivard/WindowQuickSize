@@ -1,5 +1,5 @@
 # WindowQuickSize
-Bask in the glory of my shitty AutoHotkey script that positions and resizes windows to some frequently used (at least in my workflow) sizes and positions. This script is helpful if you have an ultrawide monitor and a similar workflow as me. 
+Bask in the glory of my ~~shitty~~ **divine** AutoHotkey script that positions and resizes windows to some frequently used (at least in my workflow) sizes and positions. This script is helpful if you have an ultrawide monitor and a similar workflow as me. 
 
 ## Definitions
 These are the different types of windows I have created. Note that I designed this script to give the windows some padding, simply because I think it looks and feels good. The padding is the same for all dimensions (x and y). It is only defined by the distance from the left edge of your screen to the active window the momemt you configure the main window by pressing `Shift+ctrl+alt+1`. This means that the vertical position of the window you configure to be the main window does not matter. The height will automatically be resized to `screen_height - 2 * padding` once you pressed the configure keybinding. The only things you need to keep in mind when configuring the main window is the width of the active window and its distance from the left edge of your screen.
